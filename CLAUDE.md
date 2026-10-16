@@ -2,9 +2,9 @@
 
 ## 1. Language rule / 语言规则
 
-All conclusions are written in English. Each English paragraph is followed immediately by exactly one blockquote paragraph (lines starting with `> `) that holds its complete Chinese translation. Headings are bilingual (English and Chinese separated by a slash), tables use paired English and Chinese columns, and CSV files carry `_en` and `_zh` columns. Never leave an English paragraph untranslated, and never merge two paragraphs into one translation. Every number and every source ID in an English paragraph must also appear in its Chinese translation.
+All conclusions are written in English. Each English paragraph is followed immediately by exactly one blockquote paragraph (lines starting with `> `) that holds its complete Chinese translation. Headings are bilingual (English and Chinese separated by a slash), tables use paired English and Chinese columns, and CSV files carry `_en` and `_zh` columns. Never leave an English paragraph untranslated, and never merge two paragraphs into one translation. Every number and every source ID in an English paragraph must also appear in its Chinese translation. Titles of sources and names of datasets are identifiers and stay as published, and URLs and source IDs are not translated.
 
-> 所有结论用英文撰写。每个英文段落后紧跟恰好一个引用块段落（以 `> ` 开头的行），其中是该段的完整中文翻译。标题为双语（English / 中文），表格使用英文与中文成对的列，CSV 文件带有 `_en` 和 `_zh` 列。绝不留下未翻译的英文段落，也绝不把两个段落合并成一段翻译。英文段落中的每个数字和每个来源 ID 也必须出现在其中文翻译中。
+> 所有结论用英文撰写。每个英文段落后紧跟恰好一个引用块段落（以 `> ` 开头的行），其中是该段的完整中文翻译。标题为双语（English / 中文），表格使用英文与中文成对的列，CSV 文件带有 `_en` 和 `_zh` 列。绝不留下未翻译的英文段落，也绝不把两个段落合并成一段翻译。英文段落中的每个数字和每个来源 ID 也必须出现在其中文翻译中。来源标题和数据集名称属于标识符，保持原样，URL 和来源 ID 不翻译。
 
 ## 2. Identifiers / 标识符
 

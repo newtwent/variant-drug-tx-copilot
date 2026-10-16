@@ -95,3 +95,7 @@ On 2026-10-16 the repository was built for the first time, with 191 sources, 20 
 On 2026-10-16 a second round applied the inclusion bar: it added 79 sources, upgraded 10 rows (one of them to tier T1), retired 38 rows, added 15 datasets and updated 2 dataset rows, added `docs/09-labcompass-insights.md` and the optional hypothesis HD, and extended the log to 132 entries (Q45 to Q132). `CLAUDE.md` gained the tier-T1 rule for GitHub and PyPI pages, the new columns and the inclusion bar. The totals are now 270 sources (232 active, 38 retired), 35 datasets and 12 sources at tier T1.
 
 > 2026-10-16 第二轮采用了纳入门槛：新增 79 条来源，升级 10 条（其中 1 条升为 T1 级），退役 38 条，新增 15 个数据集并更新 2 个数据集条目，新增 `docs/09-labcompass-insights.md` 和可选假设 HD，并把日志扩展到 132 条（Q45 至 Q132）。`CLAUDE.md` 增加了 GitHub 与 PyPI 页面的 T1 规则、新列和纳入门槛。当前总计 270 条来源（232 条 active，38 条 retired）、35 个数据集，以及 12 条 T1 级来源。
+
+Later on 2026-10-16, spot checks of three load-bearing numbers (Q126 to Q132) qualified the response-eQTL counts of GD10 and the reporter-assay fraction of GD50 and added EV36, and `data/datasets.csv` received a Chinese column for each descriptor field.
+
+> 2026-10-16 稍后，对三个承重数字的抽查（Q126 至 Q132）对 GD10 的响应 eQTL 计数和 GD50 的报告基因实验比例加了限定，并新增了 EV36；`data/datasets.csv` 的每个描述字段也都增加了中文列。
