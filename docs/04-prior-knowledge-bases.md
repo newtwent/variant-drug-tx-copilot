@@ -24,13 +24,17 @@ A signaling-network recurrent model such as LEMBAS sets its weights to real mole
 
 > 像 LEMBAS 这样的信号网络循环模型，把权重设置为真实的分子相互作用，其余全部置零 [MD12]。它的 GPU 重新实现快 7 倍以上，并且对加入先验网络的错误边的剪除程度大于对原始先验网络中边的剪除程度，前提是 L2 正则足够大 [MD13]。
 
-For pharmacogenomics, PharmVar places copy-number variants, hybrid genes and duplications in a structural-variant class [KB11], and CYP2D6 illustrates the problem: about 133 to 137 star alleles are listed depending on the source [KB13], some alleles are specific to ancestry groups such as sub-Saharan African populations [KB15], and some SNPs cause false copy-number-loss calls in common assays [KB16]. A comparison of star-allele callers exists [KB12]. A 3-SNP haplotype model was reported to fit CYP2D6 expression best, but that report comes from a tier-T3 entry whose title was not retrieved [KB14].
+For pharmacogenomics, PharmVar places copy-number variants, hybrid genes and duplications in a structural-variant class [KB11], and CYP2D6 illustrates the problem: about 133 to 137 star alleles are listed depending on the source [KB13], some alleles are specific to ancestry groups such as sub-Saharan African populations [KB15], and some SNPs cause false copy-number-loss calls in common assays [KB16]. A comparison of star-allele callers exists [KB12]. A 3-SNP haplotype model was reported to fit CYP2D6 expression best, but that report comes from a tier-T3 entry whose title was not retrieved (Q22) [KB14].
 
-> 在药物基因组学方面，PharmVar 把拷贝数变异、杂合基因和重复归入结构变异类别 [KB11]，CYP2D6 说明了这个问题：按来源不同，列出约 133 到 137 个星等位基因 [KB13]，一些等位基因特异于撒哈拉以南非洲人群等祖源群体 [KB15]，而一些 SNP 会在常用检测中造成拷贝数缺失的假阳性调用 [KB16]。星等位基因调用工具的比较已有 [KB12]。有报告称 3-SNP 单倍型模型对 CYP2D6 表达拟合最好，但该报告来自一条标题未取得的 T3 级条目 [KB14]。
+> 在药物基因组学方面，PharmVar 把拷贝数变异、杂合基因和重复归入结构变异类别 [KB11]，CYP2D6 说明了这个问题：按来源不同，列出约 133 到 137 个星等位基因 [KB13]，一些等位基因特异于撒哈拉以南非洲人群等祖源群体 [KB15]，而一些 SNP 会在常用检测中造成拷贝数缺失的假阳性调用 [KB16]。星等位基因调用工具的比较已有 [KB12]。有报告称 3-SNP 单倍型模型对 CYP2D6 表达拟合最好，但该报告来自一条标题未取得的 T3 级条目（Q22）[KB14]。
 
 The pharmacogenomics resources disagree with each other. The FDA table and CPIC give the same gene–drug association and dosing recommendation for only 5 of 126 drugs, and the FDA publishes two tables, one from CDER and one from CDRH [KB17]. CPIC's actionability grades A to D are not the same as PharmGKB's evidence levels [KB18]. For drugs with a narrow therapeutic index, misimputation of pharmacogenetic variants is risky, and direct genotyping is recommended for established actionable variants [KB19].
 
 > 药物基因组学资源彼此不一致。FDA 表与 CPIC 对同一基因-药物关联和剂量建议一致的药物仅为 126 种中的 5 种，且 FDA 发布两张表，一张来自 CDER，一张来自 CDRH [KB17]。CPIC 的可操作性分级 A 到 D 与 PharmGKB 的证据等级并不相同 [KB18]。对于窄治疗窗药物，药物遗传学变异的误填补有风险，对于已确立的可操作变异，建议直接基因分型 [KB19]。
+
+Transcription-factor regulons give an interpretable state and readout. CollecTRI regulons outperformed DoRothEA, ChEA3, RegNetwork and Pathway Commons at recovering transcription-factor activity changes in KnockTF perturbation data, and CollecTRI is the default prior of decoupleR [KB20]. These regulons were evaluated on TF perturbations, not on drug-induced programmes.
+
+> 转录因子调控子提供可解释的状态和读出。在 KnockTF 扰动数据中，CollecTRI 调控子在恢复转录因子活性变化方面优于 DoRothEA、ChEA3、RegNetwork 和 Pathway Commons，并且 CollecTRI 是 decoupleR 的默认先验 [KB20]。这些调控子是在 TF 扰动上评估的，而不是在药物诱导的程序上。
 
 ## 3. Judgments / 判断
 
@@ -41,6 +45,10 @@ J10 (confidence: low). Directed, signed edges (SIGNOR, and Reactome through Open
 J14 (confidence: medium). No single pharmacogenomics resource can be treated as ground truth, because the FDA table, CPIC and PharmGKB agree on only a small share of drugs [KB17, KB18].
 
 > J14（置信度：中）。不能把任何单一药物基因组学资源当作真值，因为 FDA 表、CPIC 和 PharmGKB 只在一小部分药物上一致 [KB17, KB18]。
+
+J22 (confidence: low-medium). Transcription-factor activities derived from CollecTRI regulons are a candidate space in which to state mechanism-level objectives, for example whether a programme stays off in a mutant context, and to score them with a mechanism-fidelity measure [KB20, EV33]. This is a proposal, because the regulons were validated for TF perturbations and not for drug-induced programmes.
+
+> J22（置信度：低中）。由 CollecTRI 调控子推导的转录因子活性，是陈述机制层面目标的候选空间，例如某个程序在突变背景中是否保持关闭，并可用机制保真度度量来评分 [KB20, EV33]。这只是一个提案，因为这些调控子是针对 TF 扰动而不是药物诱导程序验证的。
 
 ## 4. Recommended actions / 行动建议
 
@@ -60,6 +68,10 @@ Test the choice of prior network empirically, with an ablation of directed-signe
 
 > 在把先验网络写入架构之前，通过有向带符号边与无向边的消融，对先验网络的选择做经验检验 [EV16]。
 
+Add CollecTRI transcription-factor activities as an interpretable readout beside gene-level metrics and compare them with PROGENy pathway footprints, before using them to state design objectives [KB20, KB10].
+
+> 在用来陈述设计目标之前，把 CollecTRI 转录因子活性作为可解释的读出加到基因层面指标旁边，并与 PROGENy 通路足迹比较 [KB20, KB10]。
+
 ## 5. Questions for confirmation / 待确认问题
 
 Should the first prior network be restricted to the signaling pathways of the drug classes in scope? Default: no restriction until the drug classes are chosen (assumption M2 in document 00).
@@ -72,21 +84,23 @@ Reactome itself was not retrieved as a source: it appears only through the Open 
 
 > Reactome 本身没有作为来源被检索到：它只出现在 Open Targets 文档中 [KB08]。DrugBank、DGIdb 和 ChEMBL 没有被检索到，而能提供结构化访问的 bio-research 文献服务器连接失败。没有找到描述 OmniPath、SIGNOR、Reactome 和 Open Targets 如何在同一管线中组合的来源（查询 Q21）。没有找到 PharmVar 下对非编码调控变异的注释（查询 Q22）。PharmGKB 和 CPIC 只通过资源层面的陈述和对比文档被看到（查询 Q08 和 Q38），而不是通过其原始数据。
 
+No benchmark of footprint-based pathway-activity scoring on drug-induced perturbations was found (query Q101). The bio-research servers that would give structured literature access (including bioRxiv and PubMed) were again reported as failed to connect in this iteration (query Q125).
+
+> 没有找到针对药物诱导扰动的、基于足迹法的通路活性打分基准（查询 Q101）。在本轮中，能提供结构化文献访问的 bio-research 服务器（包括 bioRxiv 和 PubMed）再次被报告连接失败（查询 Q125）。
+
 ## 7. Source index (category KB) / 来源索引（类别 KB）
 
-Generated from `data/sources.csv`; regenerate when the CSV changes.
+Generated from `data/sources.csv`; regenerate when the CSV changes. Rows whose status is retired are omitted, and each key point is followed by its "so what" where one was written.
 
-> 由 `data/sources.csv` 生成；CSV 变动后需重新生成。
+> 由 `data/sources.csv` 生成；CSV 变动后需重新生成。状态为 retired 的条目被省略，写有“意义”的条目在要点之后附上意义。
 
 <!-- source-index:KB:start -->
 | ID | Tier | Title | Key point | 要点（中文） |
 |---|---|---|---|---|
 | KB01 | T2 | [OmniPath: integrated knowledgebase for multi-omics analysis](<https://www.biorxiv.org/content/10.1101/2025.09.11.675512v1.full.pdf>) | aggregates signaling, TF targets, enzyme–PTM, localization, intercellular communication, complexes | 聚合信号、TF 靶、酶-PTM、定位、胞间通讯、复合物 |
 | KB02 | T2 | [OmniPath resource metadata page](<https://omnipathdb.org/info>) | 34 resources aggregated (per a 2020 paper) | 聚合 34 个资源（据 2020 年论文） |
-| KB03 | T2 | [Integrating knowledge and omics to decipher mechanisms via large-scale models of signaling networks](<https://link.springer.com/article/10.15252/msb.202211036>) | — | — |
 | KB04 | T2 | [SIGNOR 4.0: the 2025 update with focus on phosphorylation data](<https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12807704/>) | manually curated directed causal edges (activation or inhibition plus mechanism) | 人工整理的有向因果边（激活或抑制及机制） |
 | KB05 | T2 | [SIGNOR 3.0, the SIGnaling network open resource 3.0: 2022 update](<https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9825604/>) | about 33% proteome coverage | 蛋白组覆盖约 33% |
-| KB06 | T2 | [SIGNOR 2.0, the SIGnaling Network Open Resource 2.0: 2019 update](<https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7145695/>) | — | — |
 | KB07 | T2 | [Open Targets Platform: supporting systematic drug–target identification and prioritisation](<https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7779013/>) | — | — |
 | KB08 | T2 | [Open Targets documentation: Molecular interactions](<https://platform-docs.opentargets.org/target/molecular-interactions>) | imports SIGNOR and Reactome (human–human, directional, signed where possible) | 引入 SIGNOR 和 Reactome（人-人、有向、尽量带符号） |
 | KB09 | T2 | [Large-scale regulatory and signaling network assembly through linked open data](<https://academic.oup.com/database/article/doi/10.1093/database/baaa113/6103765>) | STRING is undirected, SIGNOR directed | STRING 无向，SIGNOR 有向 |
@@ -100,4 +114,5 @@ Generated from `data/sources.csv`; regenerate when the CSV changes.
 | KB17 | T2 | [FDA vs CPIC (March 2021 comparison PDF)](<https://cpicpgx.org/wp-content/uploads/2021/03/FDA-vs-CPIC-march-2021-c-002.pdf>) | same gene–drug association and dosing recommendation for only 5 of 126 drugs; FDA has a CDER table and a CDRH table | 同一基因-药物关联与剂量建议一致的药物仅为 126 种中的 5 种；FDA 有 CDER 与 CDRH 两张表 |
 | KB18 | T2 | [CPIC SOP (2025-05-09)](<https://cpicpgx.org/wp-content/uploads/2025/07/CPIC-SOP-05.09.2025-FINAL.pdf>) | CPIC actionability grades A–D differ from PharmGKB evidence levels | CPIC 可操作性分级 A–D 不同于 PharmGKB 证据等级 |
 | KB19 | T2 | [Establishing Best Practices for Clinical GWAS: Tackling Imputation and Data Quality Challenges](<https://doi.org/10.3390/ijms26136397>) | misimputation of pharmacogenetic variants is risky for narrow-therapeutic-index drugs; direct genotyping recommended | 对窄治疗窗药物，药物遗传学变异的误填补有风险；建议直接基因分型 |
+| KB20 | T2 | [Expanding the coverage of regulons from high-confidence prior knowledge for accurate estimation of transcription factor activities (CollecTRI)](<https://academic.oup.com/nar/article/51/20/10934/7318114>) | CollecTRI regulons outperformed DoRothEA, ChEA3, RegNetwork and Pathway Commons at recovering TF activity changes in KnockTF perturbation data; the default prior of decoupleR **So what:** gives an interpretable low-dimensional state and readout (TF activities) and a mechanism-level target for judging drug-induced programmes | 在 KnockTF 扰动数据中，CollecTRI 调控子在恢复 TF 活性变化方面优于 DoRothEA、ChEA3、RegNetwork 和 Pathway Commons；它是 decoupleR 的默认先验 **意义：** 提供可解释的低维状态与读出（TF 活性），以及评判药物诱导程序的机制层面目标 |
 <!-- source-index:KB:end -->

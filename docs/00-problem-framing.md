@@ -2,9 +2,9 @@
 
 ## 1. Scope / 范围
 
-This document states the research question formally, fixes the two tracks and the variant typology, and collects the assumptions, common mistakes, missing information and the deeper question that frame every other document. It contains no new evidence: the evidence is in documents 01 to 07, and the design consequences are in document 08.
+This document states the research question formally, fixes the two tracks and the variant typology, and collects the assumptions, common mistakes, missing information and the deeper question that frame every other document. It contains no new evidence: the evidence is in documents 01 to 07, the design consequences are in document 08, and the analysis of the decision-oriented LabCompass system is in document 09.
 
-> 本文档对研究问题做形式化陈述，确定两条轨道和变异类型学，并汇集贯穿其他所有文档的假设、常见错误、缺失信息和更深层问题。它不包含新证据：证据在文档 01 至 07 中，设计上的后果在文档 08 中。
+> 本文档对研究问题做形式化陈述，确定两条轨道和变异类型学，并汇集贯穿其他所有文档的假设、常见错误、缺失信息和更深层问题。它不包含新证据：证据在文档 01 至 07 中，设计上的后果在文档 08 中，面向决策的 LabCompass 系统的分析在文档 09 中。
 
 ## 2. Formal statement / 形式化陈述
 
@@ -21,9 +21,9 @@ The interaction is a difference of differences. It is expected to be much smalle
 
 > 交互项是差值的差值。预计它远小于药物主效应，因此模型可以在主效应上得分很高，却对基因型一无所知。所以评测必须直接针对交互项，详见文档 07。
 
-Two mechanisms are worth separating. In the mediation view, genotype changes the baseline state x0, and the drug then acts on that shifted state in the same way for everyone. In the operator view, genotype changes how the drug acts, through binding, the downstream pathway or feedback, so the response differs even for the same baseline. Document 08 turns this distinction into a falsifiable hypothesis.
+Two mechanisms are worth separating. In the mediation view, genotype changes the baseline state x0, and the drug then acts on that shifted state in the same way for everyone. In the operator view, genotype changes how the drug acts, through binding, the downstream pathway or feedback, so the response differs even for the same baseline. Document 08 turns this distinction into a falsifiable hypothesis. The two mechanisms can coexist, and their balance probably differs by variant class (document 02, J17).
 
-> 有两种机制值得区分。在中介观点下，基因型改变基线状态 x0，药物随后以对所有人相同的方式作用于这个被改变的状态。在算子观点下，基因型通过结合、下游通路或反馈改变药物的作用方式，因此即使基线相同，响应也不同。文档 08 把这一区分转化为可证伪的假设。
+> 有两种机制值得区分。在中介观点下，基因型改变基线状态 x0，药物随后以对所有人相同的方式作用于这个被改变的状态。在算子观点下，基因型通过结合、下游通路或反馈改变药物的作用方式，因此即使基线相同，响应也不同。文档 08 把这一区分转化为可证伪的假设。两种机制可以并存，其平衡很可能因变异类别而异（文档 02，J17）。
 
 ## 3. Two tracks and a variant typology / 两条轨道与变异类型学
 
@@ -31,9 +31,9 @@ The somatic track (S) treats variation between cancer cell lines or tumors, such
 
 > 体细胞轨道（S）把癌症细胞系或肿瘤之间的变异（如驱动突变）视为基因型差异的来源。种系轨道（G）处理人与人之间或供体来源细胞系之间的遗传变异。轨道 B 标记方法层面或资源层面、对两者都适用的来源。两条轨道在效应大小、数据可得性和混杂方面不同，因此分开分析，只在证据允许时才合并。
 
-Variants are tagged with five classes. Class 1 is target coding variants that change binding or function. Class 2 is target regulatory variants that change expression, such as cis-eQTLs. Class 3 is copy-number and structural variants. Class 4 is pathway upstream, downstream and bypass variants. Class 5 is pharmacokinetic (PK) gene variants affecting metabolism and transport, which are a confounder when the question concerns pharmacodynamics (PD). The tags in `data/sources.csv` are curator judgments, not claims made by the sources.
+Variants are tagged with five classes. Class 1 is target coding variants that change binding or function. Class 2 is target regulatory variants that change expression, such as cis-eQTLs. Class 3 is copy-number and structural variants. Class 4 is pathway upstream, downstream and bypass variants. Class 5 is pharmacokinetic (PK) gene variants affecting metabolism and transport, which are a confounder when the question concerns pharmacodynamics (PD). The tags in `data/sources.csv` (track, variant class, kind and relevance) are curator judgments, not claims made by the sources.
 
-> 变异被标记为五类。类别 1 是改变结合或功能的靶点编码变异。类别 2 是改变表达的靶点调控变异，如 cis-eQTL。类别 3 是拷贝数与结构变异。类别 4 是通路上游、下游和旁路变异。类别 5 是影响代谢和转运的药代动力学（PK）基因变异，当问题涉及药效动力学（PD）时它们是混杂因素。`data/sources.csv` 中的标签是整理者的判断，不是来源本身的论断。
+> 变异被标记为五类。类别 1 是改变结合或功能的靶点编码变异。类别 2 是改变表达的靶点调控变异，如 cis-eQTL。类别 3 是拷贝数与结构变异。类别 4 是通路上游、下游和旁路变异。类别 5 是影响代谢和转运的药代动力学（PK）基因变异，当问题涉及药效动力学（PD）时它们是混杂因素。`data/sources.csv` 中的标签（轨道、变异类别、kind 和 relevance）是整理者的判断，不是来源本身的论断。
 
 ## 4. Hidden assumptions to confirm or drop / 需要确认或放弃的隐含假设
 
@@ -49,21 +49,29 @@ H3. A world-model architecture gives gains over conditional-generative or linear
 
 > H3. 世界模型架构相对条件生成模型或线性模型有增益。这一点尚未检验。
 
-H4. Matched data of genotype, drug and post-treatment transcriptome can be obtained or constructed, or cell-line genotype can proxy individual genotype. The proxy is strongly confounded with lineage and epigenome [DS05].
+H4. Matched data of genotype, drug and post-treatment transcriptome can be obtained or constructed, or cell-line genotype can proxy individual genotype. The proxy is strongly confounded with lineage and epigenome [DS05]. Single-cell data that pair genotype, an exposure and a transcriptome now exist, but only at the scale of tens of individuals [GD10, GD49].
 
-> H4. 可以获得或构造基因型、药物与处理后转录组相匹配的数据，或者细胞系基因型可以代理个体基因型。该代理与谱系和表观基因组强烈混杂 [DS05]。
+> H4. 可以获得或构造基因型、药物与处理后转录组相匹配的数据，或者细胞系基因型可以代理个体基因型。该代理与谱系和表观基因组强烈混杂 [DS05]。把基因型、暴露和转录组配对的单细胞数据现已存在，但规模只有数十个个体 [GD10, GD49]。
 
-H5. In-vitro results transfer to in-vivo settings.
+H5. In-vitro results transfer to in-vivo settings. A CFTR organoid assay suggests that variant-specific results transfer qualitatively rather than quantitatively [GD52].
 
-> H5. 体外结果可迁移到体内情境。
+> H5. 体外结果可迁移到体内情境。一项 CFTR 类器官实验提示，变异特异的结果能定性地、而不是定量地迁移 [GD52]。
 
-H6. End-point snapshots are enough to model dynamics and transitions.
+H6. End-point snapshots are enough to model dynamics and transitions. Metabolic-labeling methods that separate new from old RNA are the only route found to time-resolved targets [DS21, DS22].
 
-> H6. 终点快照足以建模动力学与转移。
+> H6. 终点快照足以建模动力学与转移。分离新旧 RNA 的代谢标记方法是找到的通往时间分辨目标的唯一途径 [DS21, DS22]。
 
 H7. Somatic and germline variation can be handled in one framework.
 
 > H7. 体细胞变异与种系变异可以在同一框架内处理。
+
+H8. A model that predicts well can be used to decide which drug and dose to give. LabCompass frames the cell world model as a tool to decide what to do next, which is a different target from prediction accuracy [WM30].
+
+> H8. 预测得好的模型就可以用来决定给哪种药物和剂量。LabCompass 把细胞世界模型表述为决定下一步做什么的工具，这与预测准确度是不同的目标 [WM30]。
+
+H9. Abstract-level reading and search-tool summaries are good enough to rank relevance. Such summaries are model-written and sometimes disagree, as the LinkedIn items about LabCompass do [WM31].
+
+> H9. 摘要层面的阅读和检索工具的摘要足以排序相关性。这类摘要由模型撰写，有时相互矛盾，就像关于 LabCompass 的 LinkedIn 条目那样 [WM31]。
 
 ## 5. Common mistakes to avoid / 需要避免的常见错误
 
@@ -107,6 +115,22 @@ E10. Treating "world model" as a premise instead of a hypothesis to be tested [W
 
 > E10. 把“世界模型”当作前提，而不是待检验的假设 [WM21]。
 
+E11. Treating a search-tool summary as the paper. The summaries are model-written, and the summaries of one LinkedIn post disagreed with each other [WM31].
+
+> E11. 把检索工具的摘要当作论文本身。这些摘要由模型撰写，对同一则 LinkedIn 帖子的摘要还相互矛盾 [WM31]。
+
+E12. Reading "inverse design works for cytokines in blood progenitors" as evidence that genotype-aware drug design works. LabCompass uses protein-level readouts and no inherited genotype [WM27, WM28].
+
+> E12. 把“细胞因子在血液祖细胞中的逆向设计有效”当作“基因型感知的药物设计有效”的证据。LabCompass 使用蛋白水平的读出，没有遗传性基因型 [WM27, WM28]。
+
+E13. Pooling all variant classes into one genotype gain, which hides the difference between baseline mediation and a change of the response operator [GD45, GD10].
+
+> E13. 把所有变异类别合并为一个基因型增益，这会掩盖基线中介与响应算子变化之间的区别 [GD45, GD10]。
+
+E14. Counting a pooled-donor dataset as genotype-by-drug data when its donors may not be genotyped [DS16, MD42], and scoring with metrics that reward the average-effect baseline [EV29, EV30].
+
+> E14. 在供体可能未做基因分型时，把混池供体数据集当作基因型×药物数据 [DS16, MD42]，以及用奖励平均效应基线的指标来评分 [EV29, EV30]。
+
 ## 6. Missing information that could change the result / 可能改变结果的缺失信息
 
 M1. Target variant track: somatic (cancer) or germline (population). It determines data and evaluation. Default: both tracks in parallel, somatic first.
@@ -125,11 +149,23 @@ M4. Data and compute budget, including whether new Perturb-seq data can be gener
 
 > M4. 数据与算力预算，包括能否自行产生新的 Perturb-seq 数据。默认：仅使用公开数据。
 
+M5. The intended end use (prediction or decision) and any licence constraints. They decide whether hypothesis HD is run and whether non-commercial weights such as State and Stack can be used [MD62, MD65]. Default: prediction first, decision as an optional last step, non-commercial weights flagged and no decision taken on their use until the licence constraint is known.
+
+> M5. 预期用途（预测还是决策）以及任何许可限制。它们决定是否运行假设 HD，以及能否使用 State 和 Stack 这类非商业权重 [MD62, MD65]。默认：预测优先，决策作为可选的最后一步，非商业权重只标注，在许可限制明确之前不就是否使用它们作出决定。
+
+M6. The LabCompass full text and the genotyping status of the donors of the large cytokine datasets. Both are unread or unknown [WM27, DS16, MD42]. Default: treat everything that depends on them as unverified.
+
+> M6. LabCompass 全文，以及大型细胞因子数据集供体的基因分型状态。两者都没有读到或未知 [WM27, DS16, MD42]。默认：把依赖它们的一切都视为未经核验。
+
 ## 7. The deeper question behind the request (inference) / 请求背后的更深层问题（推断）
 
 The request that started this repository was a single message, so there is no history of repeated discussion to draw on; the following is inferred from the request itself. The end goal is a world model, but the question that may not yet have been asked is whether the available data contain a large enough, clean enough, trainable and falsifiable signal in the genotype-by-drug interaction. If the signal lives only in a small slice, such as somatic driver mutations or a few reQTLs, then "does a world model beat linear baselines?" is not an architecture choice but an experiment that must first be designed to be falsifiable. Its twin question is how much of the genotype effect is mediated by baseline expression.
 
 > 开启本仓库的请求只有一条消息，因此没有可归纳的反复讨论历史；以下是基于请求本身的推断。最终目标是世界模型，但可能尚未被问出口的问题是：现有数据在基因型×药物交互项上，是否含有足够大、足够干净、可训练且可证伪的信号。如果信号只存在于一小片区域，例如体细胞驱动突变或少数 reQTL，那么“世界模型是否优于线性基线”就不是架构选择，而是必须先设计成可证伪的实验。它的孪生问题是：基因型效应有多少是经由基线表达中介的。
+
+Refinement after the second iteration (inference, confidence: low-medium). The later messages asked for continued, relevance-gated iteration and for particular attention to LabCompass, a system that uses a world model to decide which experiment to run next. That suggests a sibling question: is the model meant to predict, or to decide? If the end use is choosing a drug and dose for a genotype, the right target is decision quality in a closed loop, and prediction accuracy is only a means. That changes what the first experiments should measure, and it argues for including the retrospective closed-loop test of hypothesis HD next to HA, HB and HC; the mediation test of HA still comes first, because if genotype adds nothing beyond baseline expression the rest is moot.
+
+> 第二轮迭代之后的细化（推断，置信度：低中）。后来的消息要求持续的、按相关性门槛的迭代，并特别关注 LabCompass，这是一个用世界模型来决定下一步做哪个实验的系统。这提示了一个并列的问题：模型的用途是预测，还是决策？如果最终用途是为某个基因型选择药物和剂量，那么正确的目标是闭环中的决策质量，预测准确度只是手段。这改变了最初的实验应测量的内容，也支持把假设 HD 的回溯式闭环检验与 HA、HB、HC 并列；但 HA 的中介检验仍然最先进行，因为如果基因型在基线表达之外没有任何增益，其余都无从谈起。
 
 ## 8. Glossary / 术语表
 
