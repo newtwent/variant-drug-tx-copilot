@@ -86,9 +86,9 @@ HB decision rule and risks. HB is rejected if the spectrum is flat and a dense p
 
 > HB 的判定规则与风险。如果谱是平的，且稠密参数化在容量相等时优于稀疏参数化，则 HB 被拒绝。如果谱衰减很快，且稀疏形式与稠密形式相当或更好，则 HB 得到支持。噪声会抬高表观秩，而较小的效应大小会抹去稀疏性的收益 [MD17]。
 
-HB prior evidence (confidence: low-medium). Several independent anchors point to sparse genotype-specific effects: about 1% of allelic variants in a reporter assay interact with a drug (6 of 665) [GD50], 21% of subsystems carry about 80% of the importance in a yeast genotype model [MD54], perturbation-specific signal is sparse relative to invariant structure in expression data [MD22], and in TP53-mutant lines a programme is switched off rather than rewritten [GD45]. None of these is a transcriptome-wide drug-response test, so HB remains untested.
+HB prior evidence (confidence: low-medium). Several independent anchors point to sparse genotype-specific effects: about 1% of allelic variants in a reporter assay interact with a drug (6 of 665 at a false discovery rate below 5%; the first version of the paper reported 29 variants at a looser threshold) [GD50], 21% of subsystems carry about 80% of the importance in a yeast genotype model [MD54], perturbation-specific signal is sparse relative to invariant structure in expression data [MD22], and in TP53-mutant lines a programme is switched off rather than rewritten [GD45]. None of these is a transcriptome-wide drug-response test, so HB remains untested.
 
-> HB 的先验证据（置信度：低中）。若干独立的锚点都指向稀疏的基因型特异效应：在报告基因实验中约 1% 的等位基因变异与药物发生交互（665 个中的 6 个）[GD50]，在酵母基因型模型中 21% 的子系统承载约 80% 的重要性 [MD54]，在表达数据中相对不变结构而言扰动特异信号是稀疏的 [MD22]，在 TP53 突变系中是一个程序被关闭而不是被重写 [GD45]。这些都不是全转录组的药物响应检验，因此 HB 仍未经检验。
+> HB 的先验证据（置信度：低中）。若干独立的锚点都指向稀疏的基因型特异效应：在报告基因实验中约 1% 的等位基因变异与药物发生交互（FDR 低于 5% 时 665 个中的 6 个；论文第一版在较宽松的阈值下报告了 29 个变异）[GD50]，在酵母基因型模型中 21% 的子系统承载约 80% 的重要性 [MD54]，在表达数据中相对不变结构而言扰动特异信号是稀疏的 [MD22]，在 TP53 突变系中是一个程序被关闭而不是被重写 [GD45]。这些都不是全转录组的药物响应检验，因此 HB 仍未经检验。
 
 ### 3.3 HC: world-model gain / HC：世界模型增益
 
@@ -172,9 +172,9 @@ Decision-test data. The retrospective loop of HD can run on the dose-resolved si
 
 ## 6. Milestones and decision gates / 里程碑与决策门
 
-M0, verification. Open outbound network access (bioRxiv, PubMed and the plugin servers that currently fail to connect) and verify the load-bearing claims by reading the primary sources: the response-eQTL counts [GD10], the reporter-assay ratio of 6 of 665 [GD50], the Systema reference shift [EV29], and the LabCompass full text with its baselines, ablations, uncertainty handling and viral-infection analysis [WM27]. Run the unit tests of the labcompass package [WM28], then update tiers and the verified flag. No other milestone should rely on a claim that is still unverified.
+M0, verification. Open outbound network access (bioRxiv, PubMed and the plugin servers that currently fail to connect) and verify the load-bearing claims by reading the primary sources: the response-eQTL counts [GD10], the reporter-assay ratio of 6 of 665 [GD50], the Systema reference shift [EV29], and the LabCompass full text with its baselines, ablations, uncertainty handling and viral-infection analysis [WM27]. Spot checks by search (Q126 to Q132) have already reconfirmed the 51 individuals of [GD10], the 6 of 665 variants at a false discovery rate below 5% for the published version of [GD50] and, through the authors' repository, the perturbed-centroid reference of [EV29] [EV36]; the per-cell-type response-eQTL counts remain unconfirmed. Run the unit tests of the labcompass package [WM28], then update tiers and the verified flag. No other milestone should rely on a claim that is still unverified.
 
-> M0，核验。开放出站网络访问（bioRxiv、PubMed 以及目前连接失败的插件服务器），通过阅读原始来源核验承重主张：响应 eQTL 的计数 [GD10]、报告基因实验的比例 665 个中的 6 个 [GD50]、Systema 的参照重设 [EV29]，以及 LabCompass 全文及其基线、消融、不确定性处理和病毒感染分析 [WM27]。运行 labcompass 软件包的单元测试 [WM28]，然后更新等级和 verified 标记。其他里程碑都不应依赖仍未核验的主张。
+> M0，核验。开放出站网络访问（bioRxiv、PubMed 以及目前连接失败的插件服务器），通过阅读原始来源核验承重主张：响应 eQTL 的计数 [GD10]、报告基因实验的比例 665 个中的 6 个 [GD50]、Systema 的参照重设 [EV29]，以及 LabCompass 全文及其基线、消融、不确定性处理和病毒感染分析 [WM27]。通过检索进行的抽查（Q126 至 Q132）已经再次确认了 [GD10] 的 51 名个体、[GD50] 已发表版本在 FDR 低于 5% 时 665 个变异中的 6 个，以及（通过作者的仓库）[EV29] 的扰动后质心参照 [EV36]；每种细胞类型的响应 eQTL 计数仍未确认。运行 labcompass 软件包的单元测试 [WM28]，然后更新等级和 verified 标记。其他里程碑都不应依赖仍未核验的主张。
 
 M1, data assembly. Check access and licenses, count mutant and wild-type lines per driver mutation and lineage, and define the contrasts and the minimum number of lines per contrast from a power calculation.
 
