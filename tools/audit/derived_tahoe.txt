@@ -1,0 +1,8 @@
+Derived by the curator on 2026-10-16 from the Tahoe-100M metadata tables on Hugging Face (cell_line_metadata, drug_metadata, sample_metadata, and the cell_name, pass_filter and plate columns of obs_metadata read by HTTP range requests):
+- obs_metadata lists 100,648,790 cells: 95,624,334 labeled full (the size of the released expression table) and 5,024,456 labeled minimal.
+- 50 cell lines have cells; the metadata table covers 102 line names (superset). Cells per line (full): median 1,833,415; minimum 18,340 (NCI-H596); 42 lines with at least 1 million cells; 5 lines below 210,000 cells.
+- 379 drugs, each at 0.05, 0.5 and 5 uM (1,137 drug-dose conditions) plus DMSO controls; 14 plates x 96 wells = 1,344 samples; 975 of 1,138 conditions are one well.
+- Panel lines by organ: Lung 15, Bowel 9, Pancreas 7, Skin 4, CNS/Brain 3, Breast 2, Liver 2, Uterus 2, Esophagus/Stomach 2, one each Bladder/Urinary Tract, Cervix, Peripheral Nervous System, Kidney.
+- Driver annotation: every panel line carries at least one annotated driver. Lines per driver gene: TP53 33, KRAS 24, CDKN2A 22, ARID1A 15, KMT2D 15, CDKN2B 13, ZFHX3 13, SMARCA4 12, PIK3CA 11, TERT 11, APC 10, BRAF 9, PTEN 9, NRAS 7, STK11 7.
+- Variants: BRAF p.V600E 7 lines; KRAS G12C 6, G12D 6, G12V 5; TP53 R273H 3; PIK3CA E545K 3; NRAS Q61K 3 and Q61R 3; PTEN deletion 5.
+- Lineage-matched contrasts (mutant / other lines): TP53 Lung 12/3, Bowel 5/4, Pancreas 5/2; KRAS Lung 12/3, Bowel 4/5, Pancreas 6/1; BRAF Bowel 5/4; PIK3CA Bowel 5/4; APC Bowel 8/1; CDKN2A Lung 9/6; STK11 Lung 6/9; SMARCA4 Lung 6/9.

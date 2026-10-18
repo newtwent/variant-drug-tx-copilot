@@ -8,64 +8,79 @@ This repository collects, classifies and critiques public evidence on one resear
 
 ## 2. Status and limits / 状态与限制
 
-The repository was built on 2026-10-16 in two rounds. The first round used 39 completed web searches, and the second round added 78 web searches and 46 page fetches, so `docs/search-log.md` now holds 132 entries (Q01 to Q132). The second round applied an inclusion bar (section 4): it added 79 sources, upgraded 10 rows, retired 38 rows and added a document on LabCompass (`docs/09-labcompass-insights.md`). Of the 270 sources, 232 are active and 38 are retired.
+On 2026-10-18 the repository holds 292 sources (246 active, 46 retired), 35 datasets, 143 log entries (Q01 to Q143) and 29 open questions. The 246 active sources split into 186 at tier T1, 57 at tier T2 and 3 at tier T3.
 
-> 本仓库于 2026-10-16 分两轮构建。第一轮使用了 39 次已完成的网络检索，第二轮又增加了 78 次网络检索和 46 次页面抓取，因此 `docs/search-log.md` 现有 132 条记录（Q01 至 Q132）。第二轮采用了纳入门槛（第 4 节）：新增 79 条来源，升级 10 条，退役 38 条，并新增了一篇关于 LabCompass 的文档（`docs/09-labcompass-insights.md`）。270 条来源中，232 条为 active，38 条为 retired。
+> 2026-10-18，仓库共有 292 条来源（246 条 active，46 条 retired）、35 个数据集、143 条日志（Q01 至 Q143）和 29 个待确认问题。246 条 active 来源分为 186 条 T1 级、57 条 T2 级和 3 条 T3 级。
 
-Tier T1 with verified=Y applies to 12 sources: they are GitHub or PyPI pages that were actually retrieved in the second round, through a fetch tool that returns a model-written answer about the page and not its verbatim text. The other 258 sources are marked verified=N: each was seen only at title, abstract or search-excerpt level, and none of them, including the LabCompass preprint, was checked against its full text, because the build environment could not resolve bioRxiv, PubMed, Europe PMC, Hugging Face and similar hosts and the bio-research literature servers failed to connect. In this repository, "not found" therefore means "not retrieved by a limited search", not "does not exist".
+The repository was built on 2026-10-16 in two rounds and audited in a third round between 2026-10-16 and 2026-10-18. The audit retrieved by script the best available text of each of the 232 rows that were active before it and compared every recorded claim with that text; a claim counts as verified only when a script confirmed a literal quote from the text (Q133 to Q143). Of 2,305 claims, 2,094 were verified, 110 unsupported, 71 not checkable and 30 contradicted, and the rows were rewritten to keep only what passed.
 
-> 有 12 条来源为 T1 级且 verified=Y：它们是第二轮中确实取回过的 GitHub 或 PyPI 页面，所用的抓取工具返回的是模型针对页面所写的回答，而不是页面原文。其余 258 条来源标记为 verified=N：每条都只被看到标题、摘要或检索摘录，包括 LabCompass 预印本在内，没有一条核对过全文，因为构建环境无法解析 bioRxiv、PubMed、Europe PMC、Hugging Face 等站点，且 bio-research 文献服务器连接失败。因此在本仓库中，“未找到”意味着“有限检索未取回”，而不是“不存在”。
+> 本仓库于 2026-10-16 分两轮构建，并在 2026-10-16 至 2026-10-18 的第三轮中接受了核查。核查用脚本取回此前处于 active 状态的 232 个条目各自可得的最佳文本，并把每条已记录的论断与该文本比较；只有当脚本确认了文本中的一段逐字引文时，论断才算得到核实（Q133 至 Q143）。2,305 条论断中，2,094 条得到核实，110 条无依据，71 条无法检查，30 条被反驳，条目已据此重写，只保留通过核查的内容。
+
+As a result 152 rows rose to tier T1 (143 from T2 and 9 from T3) and 8 rows were retired. Of the 40 candidates held after the second round, 21 were screened in and 10 rejected, and 9 stay held for lack of text; with the dataset-card row DS24, 22 rows were added (Q141, Q142).
+
+> 因此有 152 条升为 T1 级（143 条来自 T2，9 条来自 T3），8 条被退役。第二轮之后搁置的 40 个候选中，21 个经筛选被纳入，10 个被拒绝，9 个因缺少文本而继续搁置；加上数据集卡片条目 DS24，共新增 22 条（Q141、Q142）。
+
+The audit establishes what a source says, not that it is true. Tier T1 means that the text was read and the key point was checked against it, not that the result was replicated or that code was run. The 57 rows at tier T2 were seen only at abstract level, mostly on bioRxiv, medRxiv or paywalled journal hosts, and bioRxiv answered every full-text request with an HTTP 429 (Q134, Q138); the 3 rows at tier T3 are secondary sources.
+
+> 核查证明的是来源这样说，而不是所说为真。T1 级表示文本已被阅读且要点已对照文本核对，并不表示结果已被复现或代码已被运行。57 条 T2 级条目只见到摘要层面的内容，多数位于 bioRxiv、medRxiv 或付费期刊站点，且 bioRxiv 对每次全文请求都返回 HTTP 429（Q134、Q138）；3 条 T3 级条目是二手来源。
+
+This includes the LabCompass preprint (WM27), of which only the abstract and metadata were read (Q140); the LabCompass facts in this repository come from its two code repositories and its dataset card (WM28, WM29, DS23). In this repository, "not found" means that a limited search did not retrieve it, not that it does not exist.
+
+> 其中包括 LabCompass 预印本（WM27），只读到了摘要和元数据（Q140）；本仓库中的 LabCompass 事实来自它的两个代码仓库和数据集卡片（WM28、WM29、DS23）。在本仓库中，“未找到”意味着有限检索未取回，而不是不存在。
 
 ## 3. How to read / 阅读方式
 
-Every conclusion is written in English and is followed immediately by its complete Chinese translation, set as a blockquote. Claims carry source IDs such as [GD06]; each ID resolves to a row in `data/sources.csv`. Numbers marked "self-reported" come from the authors of the method itself, and numbers marked "secondary" come from a summary rather than the primary paper. Facts, judgments, recommended actions and questions are kept in separate sections.
+Every conclusion is written in English and is followed immediately by its complete Chinese translation, set as a blockquote. Claims carry source IDs such as [GD06] that resolve to rows of `data/sources.csv`. Numbers marked "self-reported" come from the authors of the method itself, and numbers marked "secondary" come from a summary rather than the primary paper. Facts, judgments, recommended actions and questions are kept in separate sections.
 
-> 每条结论先用英文撰写，紧跟其完整的中文翻译（引用块）。论断带有 [GD06] 这样的来源 ID；每个 ID 对应 `data/sources.csv` 中的一行。标注“自报”的数字来自方法作者自己，标注“二手”的数字来自总结而不是原论文。事实、判断、行动建议和问题分在不同的部分。
+> 每条结论先用英文撰写，紧跟其完整的中文翻译（引用块）。论断带有 [GD06] 这样的来源 ID，对应 `data/sources.csv` 中的行。标注“自报”的数字来自方法作者自己，标注“二手”的数字来自总结而不是原论文。事实、判断、行动建议和问题分在不同的部分。
 
-Each source row can carry a "so what" that states in at most two sentences what the source offers this project. It is the curator's judgment and not a claim of the source, and only the 89 rows that were added or upgraded in the second round have one so far. A retired source is not cited in the documents, and the source-index tables at the end of documents 01 to 07 list active rows only.
+The "so what" of a row states in at most two sentences what the source offers this project; it is the curator's judgment, not a claim of the source. Retired sources are not cited in the documents, and the source-index tables at the end of documents 01 to 07 list active rows only. Decisions that belong to the owner are collected with their defaults in `docs/10-open-questions.md`; to answer one, edit its row in `data/questions.csv` and commit.
 
-> 每条来源可以带有一句“意义”，用至多两句话说明该来源能为本项目提供什么。它是整理者的判断，而不是来源本身的论断，目前只有第二轮新增或升级的 89 条才有。退役的来源不在文档中被引用，文档 01 到 07 末尾的来源索引表只列出 active 条目。
+> 一行的“意义”用至多两句话说明该来源能为本项目提供什么；它是整理者的判断，而不是来源本身的论断。退役的来源不在文档中被引用，文档 01 到 07 末尾的来源索引表只列出 active 条目。属于所有者的决策连同其默认值收集在 `docs/10-open-questions.md` 中；要回答某个问题，请编辑 `data/questions.csv` 中对应的行并提交。
 
 ## 4. Inclusion bar and retirement / 纳入门槛与退役
 
-A source enters the knowledge base only if all five conditions hold. It fits the topic, which is either the mechanism by which variants in targets or pathways reshape drug-induced transcription, or the modeling of perturbation response and world models. It makes a specific, transferable contribution that can be stated as a "so what" in at most two sentences. It has a verifiable URL and an honest evidence tier. It is not redundant with an existing row unless it adds a distinct angle. A primary source is preferred, and a secondary one is accepted only when the primary one cannot be reached and is flagged as such. The rule for adding rows is in section 9 of `CLAUDE.md`.
+A source enters the knowledge base only if all five conditions hold: it fits the topic (the mechanism by which variants in targets or pathways reshape drug-induced transcription, or the modeling of perturbation response and world models); it makes a specific, transferable contribution that fits a "so what" of at most two sentences; it has a verifiable URL and an honest evidence tier; it is not redundant with an existing row unless it adds a distinct angle; and it is a primary source unless the primary one is unreachable, in which case it is flagged as secondary. The rules are in `CLAUDE.md` sections 7, 9 and 10.
 
-> 只有同时满足五个条件，来源才会进入知识库。它契合主题，即靶点或通路中的变异重塑药物诱导转录的机理，或扰动响应与世界模型的建模。它有具体、可迁移的贡献，能用至多两句话写成“意义”。它有可核验的 URL 和诚实的证据等级。除非带来不同的角度，否则与现有条目不冗余。优先采用一手来源，仅当一手来源无法访问时才接受二手来源，并加以标注。新增条目的规则见 `CLAUDE.md` 的第 9 节。
+> 只有同时满足五个条件，来源才会进入知识库：它契合主题（靶点或通路中的变异重塑药物诱导转录的机理，或扰动响应与世界模型的建模）；它有具体、可迁移的贡献，能写成至多两句话的“意义”；它有可核验的 URL 和诚实的证据等级；除非带来不同的角度，否则与现有条目不冗余；并且是一手来源，除非一手来源无法访问，此时要标注为二手。规则见 `CLAUDE.md` 第 7、9 和 10 节。
 
-A candidate that fails only for lack of information is held, not rejected, so that it can be screened again when the full text is readable: 40 candidates (H01 to H40) are held and 5 groups of results are rejected, all listed in `docs/search-log.md`. The same bar was applied to the 191 rows of the first round, and 38 rows that no document cited and that stated no transferable contribution were retired. A retired row stays in `data/sources.csv` with its status set to retired and a retirement note in its caveat columns, its ID is never reused, and restoring it means changing one column. The closest calls, which are the first rows to restore if a broader base is preferred, are listed in section 10 of `docs/search-log.md`.
+A candidate that fails only for lack of information is held, not rejected, so that it can be screened again when the text is readable (Q142). A row that no document cites and that states no transferable contribution may be retired; it stays in `data/sources.csv` with its status set to retired and a retirement note, its ID is never reused, and restoring it means changing one column. The 46 retired rows include the 8 that the third round retired (Q143).
 
-> 仅因信息缺失而未通过的候选会被搁置而不是拒绝，以便在全文可读时重新筛选：40 条候选（H01 至 H40）被搁置，5 组结果被拒绝，均列于 `docs/search-log.md`。同一门槛也用于第一轮的 191 条来源，其中 38 条没有被任何文档引用、也没有说明可迁移的贡献，因而被退役。退役的条目仍留在 `data/sources.csv` 中，其 status 设为 retired，并在注意事项列中带有退役说明；其 ID 绝不复用，恢复它只需改一列。最难取舍的条目是在偏好更宽的知识库时最先应恢复的，列于 `docs/search-log.md` 的第 10 节。
-
-Four columns of `data/sources.csv` were added for this purpose: `relevance` tags a row as mechanism, modeling, data, evaluation, prior or context; `so_what_en` and `so_what_zh` hold the "so what"; and `status` is active or retired. The `relevance` value of a legacy row was derived from its category code and is a curator default, not a reading of the source.
-
-> 为此在 `data/sources.csv` 中新增了四列：`relevance` 把条目标记为 mechanism、modeling、data、evaluation、prior 或 context；`so_what_en` 和 `so_what_zh` 保存“意义”；`status` 取值为 active 或 retired。旧条目的 `relevance` 由其类别代码推导，是整理者的默认值，不是对来源的阅读结果。
+> 仅因信息缺失而未通过的候选会被搁置而不是拒绝，以便在文本可读时重新筛选（Q142）。一个没有被任何文档引用、也没有说明可迁移贡献的条目可以被退役；它仍留在 `data/sources.csv` 中，其 status 设为 retired 并带有退役说明，其 ID 绝不复用，恢复它只需改一列。46 条 retired 条目中包括第三轮退役的 8 条（Q143）。
 
 ## 5. Navigation / 导航
 
+Read `docs/08-design-implications.md` for the plan and `docs/10-open-questions.md` for the questions that await an answer; the other documents hold the evidence behind them.
+
+> 计划请读 `docs/08-design-implications.md`，等待回答的问题请读 `docs/10-open-questions.md`；其他文档保存支撑它们的证据。
+
 | Path | Content | 内容 |
 |---|---|---|
-| `docs/00-problem-framing.md` | Formal statement, tracks, variant typology, assumptions, mistakes, missing information, deeper question, glossary | 形式化陈述、轨道、变异类型学、假设、错误、缺失信息、更深层问题、术语表 |
+| `docs/00-problem-framing.md` | Formal statement, tracks and variant typology, assumptions, mistakes, missing information, deeper question, glossary | 形式化陈述、轨道与变异类型学、假设、错误、缺失信息、更深层问题、术语表 |
 | `docs/01-genetic-variation-layer.md` | Variants in targets and pathways; variant-to-expression and variant-to-binding models; MR and TWAS | 靶点与通路中的变异；变异到表达、变异到结合的模型；MR 与 TWAS |
-| `docs/02-genotype-x-drug-evidence.md` | Response-eQTL, dynamic eQTL, variant functional screens, somatic mutation and drug rewiring | 响应型 eQTL、动态 eQTL、变异功能筛选、体细胞突变与药物重编程 |
-| `docs/03-data-resources.md` | Drug-perturbation, Perturb-seq and eQTL resources | 药物扰动、Perturb-seq 与 eQTL 资源 |
+| `docs/02-genotype-x-drug-evidence.md` | Response-eQTL, dynamic eQTL, variant functional screens, somatic mutation and drug rewiring; evidence map | 响应型 eQTL、动态 eQTL、变异功能筛选、体细胞突变与药物重编程；证据地图 |
+| `docs/03-data-resources.md` | Drug-perturbation, Perturb-seq and eQTL resources; dataset table | 药物扰动、Perturb-seq 与 eQTL 资源；数据集表 |
 | `docs/04-prior-knowledge-bases.md` | Signaling-network priors and pharmacogenomics resources | 信号网络先验与药物基因组学资源 |
-| `docs/05-perturbation-models.md` | Perturbation-prediction models, mechanism-informed networks, causal representation learning | 扰动预测模型、机制导向网络、因果表示学习 |
-| `docs/06-world-models.md` | Definitions, claims and critiques of world models in biology | 生物学中世界模型的定义、主张与批评 |
-| `docs/07-evaluation-and-pitfalls.md` | Benchmarks, baseline critiques, metrics, ancestry bias | 基准、基线批判、指标、祖源偏倚 |
-| `docs/08-design-implications.md` | Three falsifiable hypotheses and one optional extension, five candidate architectures, data plan, protocol, milestones | 三个可证伪假设和一个可选扩展、五种候选架构、数据计划、评测协议、里程碑 |
+| `docs/05-perturbation-models.md` | Perturbation-prediction models, mechanism-informed networks, causal representation learning; model table | 扰动预测模型、机制导向网络、因果表示学习；模型表 |
+| `docs/06-world-models.md` | Definitions, claims and critiques of world models in biology; test battery for the "world model" claim | 生物学中世界模型的定义、主张与批评；“世界模型”主张的检验清单 |
+| `docs/07-evaluation-and-pitfalls.md` | Benchmarks, baseline critiques, metrics, ancestry bias; evaluation checklist | 基准、基线批判、指标、祖源偏倚；评测清单 |
+| `docs/08-design-implications.md` | Design principles, three falsifiable hypotheses and one optional extension, candidate architectures, data plan, milestones, risks | 设计原则、三个可证伪假设和一个可选扩展、候选架构、数据计划、里程碑、风险 |
 | `docs/09-labcompass-insights.md` | LabCompass facts, component map, insights for the world model, limits of transfer, actions and questions | LabCompass 的事实、组件对照、对世界模型的启示、迁移的局限、行动建议与问题 |
-| `docs/search-log.md` | Every query (Q01 to Q132), outcome, failure, gap and verification to-do, plus the held and rejected candidates | 每次查询（Q01 至 Q132）、结果、失败、缺口与核验待办，以及被搁置和被拒绝的候选 |
-| `data/sources.csv` | 270 sources (232 active, 38 retired) with tier, relevance, key points and "so what" (English and Chinese), caveats and status | 270 条来源（232 条 active，38 条 retired），含证据等级、相关性、要点和“意义”（中英文）、注意事项与状态 |
+| `docs/10-open-questions.md` | Open questions with defaults and consequences, generated from `data/questions.csv` | 带默认值和后果的待确认问题，由 `data/questions.csv` 生成 |
+| `docs/search-log.md` | Every query (Q01 to Q143) with outcome, failures, gaps and screening decisions | 每次查询（Q01 至 Q143）及其结果、失败、缺口和筛选决定 |
+| `data/sources.csv` | 292 sources (246 active, 46 retired) with tier, relevance, key points and "so what" (English and Chinese), caveats and status | 292 条来源（246 条 active，46 条 retired），含证据等级、相关性、要点和“意义”（中英文）、注意事项与状态 |
 | `data/datasets.csv` | 35 datasets with scale, genotype information and caveats | 35 个数据集，含规模、基因型信息与注意事项 |
-| `CLAUDE.md` | Conventions for extending the repository, including the inclusion bar | 扩展本仓库的约定，含纳入门槛 |
+| `data/questions.csv` | 29 open questions with default, consequence and an answer column | 29 个待确认问题，含默认值、后果和回答列 |
+| `tools/` | Validator (`validate_kb.py`), table generator (`fill_tables.py`) and audit scripts (`audit/`) | 校验器（`validate_kb.py`）、表格生成器（`fill_tables.py`）和核查脚本（`audit/`） |
+| `CLAUDE.md` | Conventions for extending the repository: language rule, tiers, inclusion bar, round protocol, open questions | 扩展本仓库的约定：语言规则、等级、纳入门槛、每轮协议、待确认问题 |
 
 ## 6. Evidence tiers and category codes / 证据等级与类别代码
 
 | Tier | Meaning | 含义 |
 |---|---|---|
-| T1 | An official page was retrieved and queried in a session with network access, or the full text was read; so far only GitHub and PyPI pages (12 rows), none of them a paper | 在有网络访问的会话中取回并查询了官方页面，或阅读了全文；目前只有 GitHub 和 PyPI 页面（12 行），没有一篇论文 |
-| T2 | Peer-reviewed paper or preprint seen only at title, abstract or search-excerpt level | 同行评议论文或预印本，仅见到标题、摘要或检索摘录 |
-| T3 | Secondary source: news, blog, social media, third-party summary, talk abstract, or a code repository seen only in a search result | 二手来源：新闻、博客、社交媒体、第三方总结、讲座摘要，或仅在检索结果中见到的代码仓库 |
+| T1 | The full text or the official page (a read repository clone or dataset card counts) was read in a session with network access and the key point was checked against it; this does not mean that the result was replicated or the code run | 在有网络访问的会话中阅读了全文或官方页面（读过的仓库克隆或数据集卡片也算），且要点已对照文本核对；这并不表示结果已被复现或代码已被运行 |
+| T2 | Peer-reviewed paper or preprint seen only at title, abstract or excerpt level, including an abstract returned by an API | 同行评议论文或预印本，仅见到标题、摘要或摘录，包括由 API 返回的摘要 |
+| T3 | Secondary source: news, blog, social post, third-party summary or talk abstract, even when read in full | 二手来源：新闻、博客、社交媒体帖子、第三方总结或讲座摘要，即使已通读 |
 
 | Code | Category | 类别 |
 |---|---|---|
@@ -88,14 +103,14 @@ Four columns of `data/sources.csv` were added for this purpose: `relevance` tags
 
 ## 7. Change log / 变更日志
 
-On 2026-10-16 the repository was built for the first time, with 191 sources, 20 datasets and 44 log entries.
+On 2026-10-16 the repository was built for the first time with 191 sources, 20 dataset rows and 44 log rows. Later that day a second round applied the inclusion bar: it added 79 sources and 15 dataset rows, upgraded 10 rows, retired 38 rows, added `docs/09-labcompass-insights.md` and the optional hypothesis HD, and extended the log to Q132, including three spot checks of load-bearing numbers (Q126 to Q132).
 
-> 2026-10-16 首次构建本仓库，含 191 条来源、20 个数据集和 44 条日志条目。
+> 2026-10-16 首次构建本仓库，含 191 条来源、20 行数据集和 44 行日志。同日稍后第二轮采用了纳入门槛：新增 79 条来源和 15 行数据集，升级 10 条，退役 38 行，新增 `docs/09-labcompass-insights.md` 和可选假设 HD，并把日志扩展到 Q132，其中包括对承重数字的三次抽查（Q126 至 Q132）。
 
-On 2026-10-16 a second round applied the inclusion bar: it added 79 sources, upgraded 10 rows (one of them to tier T1), retired 38 rows, added 15 datasets and updated 2 dataset rows, added `docs/09-labcompass-insights.md` and the optional hypothesis HD, and extended the log to 132 entries (Q45 to Q132). `CLAUDE.md` gained the tier-T1 rule for GitHub and PyPI pages, the new columns and the inclusion bar. The totals are now 270 sources (232 active, 38 retired), 35 datasets and 12 sources at tier T1.
+Between 2026-10-16 and 2026-10-18 a third round audited the 232 rows that were active at its start against their texts, re-graded tiers, rescreened the 40 held candidates, added 22 rows, retired 8, and rewrote the 35 dataset rows from the primary pages (Q133 to Q143). It also rewrote `docs/09-labcompass-insights.md` as insight-only, condensed documents 00 to 08, created the open-questions list (`data/questions.csv`, `docs/10-open-questions.md`), installed the scripts under `tools/`, and added the round protocol (section 10) and the open-questions rule (section 11) to `CLAUDE.md`.
 
-> 2026-10-16 第二轮采用了纳入门槛：新增 79 条来源，升级 10 条（其中 1 条升为 T1 级），退役 38 条，新增 15 个数据集并更新 2 个数据集条目，新增 `docs/09-labcompass-insights.md` 和可选假设 HD，并把日志扩展到 132 条（Q45 至 Q132）。`CLAUDE.md` 增加了 GitHub 与 PyPI 页面的 T1 规则、新列和纳入门槛。当前总计 270 条来源（232 条 active，38 条 retired）、35 个数据集，以及 12 条 T1 级来源。
+> 2026-10-16 至 2026-10-18，第三轮对开始时处于 active 状态的 232 个条目对照其文本做了核查，重评了等级，重新筛选了 40 个搁置候选，新增 22 条、退役 8 条，并依据一手页面重写了 35 行数据集（Q133 至 Q143）。同时把 `docs/09-labcompass-insights.md` 重写为只留启示，精简了文档 00 至 08，创建了待确认问题清单（`data/questions.csv`、`docs/10-open-questions.md`），把脚本安装到 `tools/`，并在 `CLAUDE.md` 中加入了每轮协议（第 10 节）和待确认问题规则（第 11 节）。
 
-Later on 2026-10-16, spot checks of three load-bearing numbers (Q126 to Q132) qualified the response-eQTL counts of GD10 and the reporter-assay fraction of GD50 and added EV36, and `data/datasets.csv` received a Chinese column for each descriptor field.
+The English prose of documents 00 to 09 fell from 16,736 to 12,988 words (counted by `tools/audit/prose_words.py`), a reduction of 22%, because every document also absorbed the audit findings; detail that was removed can be recovered from the git history, and the last commit before the third round is 3d4322f.
 
-> 2026-10-16 稍后，对三个承重数字的抽查（Q126 至 Q132）对 GD10 的响应 eQTL 计数和 GD50 的报告基因实验比例加了限定，并新增了 EV36；`data/datasets.csv` 的每个描述字段也都增加了中文列。
+> 文档 00 至 09 的英文正文从 16,736 词降到 12,988 词（由 `tools/audit/prose_words.py` 统计），减少了 22%，因为每份文档同时还吸收了核查的发现；被删去的细节可从 git 历史中恢复，第三轮之前的最后一次提交是 3d4322f。
