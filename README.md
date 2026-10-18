@@ -8,9 +8,9 @@ This repository collects, classifies and critiques public evidence on one resear
 
 ## 2. Status and limits / 状态与限制
 
-On 2026-10-18 the repository holds 292 sources (246 active, 46 retired), 35 datasets, 143 log entries (Q01 to Q143) and 29 open questions. The 246 active sources split into 186 at tier T1, 57 at tier T2 and 3 at tier T3.
+On 2026-10-18 the repository holds 292 sources (246 active, 46 retired), 35 datasets, 143 log entries (Q01 to Q143) and 30 open questions. The 246 active sources split into 186 at tier T1, 57 at tier T2 and 3 at tier T3.
 
-> 2026-10-18，仓库共有 292 条来源（246 条 active，46 条 retired）、35 个数据集、143 条日志（Q01 至 Q143）和 29 个待确认问题。246 条 active 来源分为 186 条 T1 级、57 条 T2 级和 3 条 T3 级。
+> 2026-10-18，仓库共有 292 条来源（246 条 active，46 条 retired）、35 个数据集、143 条日志（Q01 至 Q143）和 30 个待确认问题。246 条 active 来源分为 186 条 T1 级、57 条 T2 级和 3 条 T3 级。
 
 The repository was built on 2026-10-16 in two rounds and audited in a third round between 2026-10-16 and 2026-10-18. The audit retrieved by script the best available text of each of the 232 rows that were active before it and compared every recorded claim with that text; a claim counts as verified only when a script confirmed a literal quote from the text (Q133 to Q143). Of 2,305 claims, 2,094 were verified, 110 unsupported, 71 not checkable and 30 contradicted, and the rows were rewritten to keep only what passed.
 
@@ -70,7 +70,7 @@ Read `docs/08-design-implications.md` for the plan and `docs/10-open-questions.m
 | `docs/search-log.md` | Every query (Q01 to Q143) with outcome, failures, gaps and screening decisions | 每次查询（Q01 至 Q143）及其结果、失败、缺口和筛选决定 |
 | `data/sources.csv` | 292 sources (246 active, 46 retired) with tier, relevance, key points and "so what" (English and Chinese), caveats and status | 292 条来源（246 条 active，46 条 retired），含证据等级、相关性、要点和“意义”（中英文）、注意事项与状态 |
 | `data/datasets.csv` | 35 datasets with scale, genotype information and caveats | 35 个数据集，含规模、基因型信息与注意事项 |
-| `data/questions.csv` | 29 open questions with default, consequence and an answer column | 29 个待确认问题，含默认值、后果和回答列 |
+| `data/questions.csv` | 30 open questions with default, consequence and an answer column | 30 个待确认问题，含默认值、后果和回答列 |
 | `tools/` | Validator (`validate_kb.py`), table generator (`fill_tables.py`) and audit scripts (`audit/`) | 校验器（`validate_kb.py`）、表格生成器（`fill_tables.py`）和核查脚本（`audit/`） |
 | `CLAUDE.md` | Conventions for extending the repository: language rule, tiers, inclusion bar, round protocol, open questions | 扩展本仓库的约定：语言规则、等级、纳入门槛、每轮协议、待确认问题 |
 

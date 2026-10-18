@@ -120,9 +120,9 @@ Decision-test data. The retrospective loop of HD runs on the dose-resolved scree
 
 ## 6. Milestones and decision gates / 里程碑与决策门
 
-M0, verification. Every row that carries a number in documents 01 to 07 has been read against its text (Q143); claims that remain unverified sit in rows at tier T2, and the LabCompass full text is unread (UQ20) [WM27]. Run the unit tests of the labcompass package before any reuse (UQ09) [WM28].
+M0, verification. Every row that carries a number in documents 01 to 07 was checked against the text that could be retrieved (Q142, Q143); claims that remain unverified sit in rows at tier T2, and the LabCompass full text is unread (UQ20) [WM27]. Run the unit tests of the labcompass package before any reuse (UQ09) [WM28].
 
-> M0，核验。文档 01 至 07 中带数字的每个条目都已对照其文本阅读（Q143）；仍未核验的论断位于 T2 级条目中，LabCompass 全文未读到（UQ20）[WM27]。在任何复用之前，运行 labcompass 软件包的单元测试（UQ09）[WM28]。
+> M0，核验。文档 01 至 07 中带数字的每个条目都已对照所能取回的文本核对（Q142、Q143）；仍未核验的论断位于 T2 级条目中，LabCompass 全文未读到（UQ20）[WM27]。在任何复用之前，运行 labcompass 软件包的单元测试（UQ09）[WM28]。
 
 M1, data assembly. Check access and licences (UQ10), define the lineage-matched contrasts from the counts above, and fix the minimum number of lines per contrast from a power calculation.
 
